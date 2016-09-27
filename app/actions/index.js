@@ -1,8 +1,8 @@
 import * as types from './types';
 
-export function filterTable(filter) {
+export function signIn(credentials) {
     return {
-        type: types.FILTER,
-        filter
+        type: types.SIGNIN,
+        credentials
     };
 }

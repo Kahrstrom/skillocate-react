@@ -1,16 +1,15 @@
 import React, { PropTypes } from 'react';
-import { Link } from 'react-router';
+import SKNavBar from './SKNavBar';
+// import {AppBar} from 'material-ui';
 
-const App = ({ children }) =>
-    <div>
-        <h1>Filter table</h1>
-        { children }
-        <footer>
-            <Link to="/">Filterable Table</Link>
-            <Link to="/about">About</Link>
-        </footer>
-    </div>;
-
+const App = ({ children }) => {
+    return(
+        <div>
+            <SKNavBar />
+            { children }
+        </div>
+    );
+};
 App.propTypes = {
     children: PropTypes.object
 };
