@@ -1,12 +1,13 @@
 import React from 'react';
-import {Link} from 'react-router';
+import SKExpandingCard from './SKExpandingCard';
+
+const myClick = function() {
+    alert('YOLO SWAG');
+};
+
 const Home = () => {
     return (
-        <div>
-            <h1>Home</h1>
-            Here be home stuff!
-            <Link to="/userdetails">User details!</Link>
-        </div>
+        <SKExpandingCard myClick={myClick} />
     );
 };
 
