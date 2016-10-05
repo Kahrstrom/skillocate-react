@@ -4,6 +4,7 @@ var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
+
 module.exports = {
     devtool: 'eval-source-map',
     entry: [
@@ -48,6 +49,11 @@ module.exports = {
                 test: /\.js?$/,
                 exclude: /node_modules/,
                 loader: 'babel'
+            },
+            {
+              test: /\.css$/,
+              loader: 'style!css?modules',
+              include: /flexboxgrid/,
             },
             {
                 test: /\.json?$/,
