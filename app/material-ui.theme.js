@@ -5,7 +5,7 @@ export default {
     fontFamily: 'Gidole, Roboto, sans-serif',
     palette: {
         primary1Color: Colors.blueGrey500,
-        primary2Color: Colors.blueGrey700,
+        primary2Color: Colors.blueGrey400,
         primary3Color: Colors.grey400,
         accent1Color: Colors.pinkA200,
         accent2Color: Colors.grey100,

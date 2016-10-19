@@ -3,12 +3,10 @@ import { Link } from 'react-router';
 import IconMenu from 'material-ui/IconMenu';
 import IconButton from 'material-ui/IconButton';
 import FontIcon from 'material-ui/FontIcon';
-import TextField from 'material-ui/TextField';
 import MenuItem from 'material-ui/MenuItem';
 import AppBar from 'material-ui/AppBar';
 import EventPluginHub from 'react/lib/EventPluginHub';
 import TapEventPlugin from 'react/lib/TapEventPlugin';
-import Theme from '../material-ui.theme';
 
 
 const SKNavbar = () => {
@@ -64,12 +62,7 @@ const SKNavbar = () => {
                     <FontIcon className="material-icons">exit_to_app</FontIcon>
                 </IconButton>
             }
-        >
-            <div>
-                <FontIcon underlineFocusStyle={{borderColor: Theme.palette.accent1Color}} className="material-icons">search</FontIcon>
-                <TextField hintText="Search"/>
-            </div>
-        </AppBar>
+        />
     );
 };
 
