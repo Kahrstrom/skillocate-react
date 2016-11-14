@@ -1,25 +1,26 @@
 import React from 'react';
 import { Link } from 'react-router';
-import Toolbar from 'material-ui/Toolbar';
+import SKSideNavToolbar from './SKSideNavToolbar';
 import SKUserDetailForm from './forms/SKUserDetailForm';
-import Theme from '../material-ui.theme';
+import Avatar from 'material-ui/Avatar';
+import FontIcon from 'material-ui/FontIcon';
 import SKSideNav from './SKSideNav';
 
-const styles = {
-    toolbar: {
-        backgroundColor: Theme.palette.primary2Color,
-        height: '20%'
-    }
-};
 
 const UserDetails = () => {
-    let education = {firstname: 'Jonatan', lastname: 'Kåhrström', email: 'jonatan.kahrstrom@gmail.com', birthdate: new Date('1988-01-22')};
+    let education = {firstname: 'Jonatan', lastname: 'Kåhrström', email: 'jonatan.kahrstrom@gmail.com', birthdate: new Date('1988-01-22'), position: 'Application consultant'};
 
     return (
         <div>
             <SKSideNav>
-                <Toolbar style={styles.toolbar} />
-                <SKUserDetailForm education={education}/>
+                <SKSideNavToolbar>
+                    <h4 style={{color: 'white', textAlign: 'center'}}>Jonatan Kåhrström</h4>
+                    <Avatar
+                        icon={<FontIcon className="material-icons">portrait</FontIcon>}
+                        size={160}
+                        />
+                </SKSideNavToolbar>
+                <SKUserDetailForm details={education}/>
             </SKSideNav>
             <h1>My details</h1>
             <Link to="/">Home</Link>

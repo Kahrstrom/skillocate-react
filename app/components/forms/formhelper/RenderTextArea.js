@@ -10,8 +10,7 @@ const styles = {
 
 const RenderTextArea = ({ input, type, label, meta, rows, ...custom }) => {
     return (
-        <TextField hintText={label}
-            floatingLabelText={label}
+        <TextField floatingLabelText={label}
             multiLine={true}
             underlineFocusStyle={styles.underlineStyle}
             errorText={meta.touched && meta.error}

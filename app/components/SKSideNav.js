@@ -1,9 +1,16 @@
 import React, { PropTypes } from 'react';
 import Drawer from 'material-ui/Drawer';
 
+const styles = {
+    drawer: {
+        top: 64,
+        width: 500
+    }
+};
+
 const SKSideNav = ({children}) => {
     return (
-        <Drawer width="400" openSecondary="true">
+        <Drawer containerStyle={styles.drawer}>
             {children}
         </Drawer>
     );

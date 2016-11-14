@@ -4,12 +4,12 @@ import { fade } from 'material-ui/utils/colorManipulator';
 export default {
     fontFamily: 'Gidole, Roboto, sans-serif',
     palette: {
-        primary1Color: Colors.blueGrey500,
-        primary2Color: Colors.blueGrey400,
-        primary3Color: Colors.grey400,
+        primary1Color: Colors.blueGrey600,
+        primary2Color: Colors.blueGrey500,
+        primary3Color: Colors.bluGrey400,
         accent1Color: Colors.pinkA200,
-        accent2Color: Colors.grey100,
-        accent3Color: Colors.grey500,
+        accent2Color: Colors.pinkA400,
+        accent3Color: Colors.pinkA700,
         textColor: Colors.darkBlack,
         alternateTextColor: Colors.white,
         canvasColor: Colors.white,
