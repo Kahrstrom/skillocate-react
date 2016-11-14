@@ -1,5 +1,6 @@
 import { routerReducer as routing } from 'react-router-redux';
 import { combineReducers } from 'redux';
+import { reducer as formReducer } from 'redux-form';
 import * as types from '../actions/types';
 
 const signIn = (state = '', action) => {
@@ -12,8 +13,9 @@ const signIn = (state = '', action) => {
 };
 
 const rootReducer = combineReducers({
-    signIn,
-    routing
+    signIn: signIn,
+    routing: routing,
+    form: formReducer
 });
 
 export default rootReducer;
