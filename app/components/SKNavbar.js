@@ -51,7 +51,7 @@ const SKNavbar = () => {
                             <FontIcon className="material-icons">business</FontIcon>
                         } />
                     <MenuItem
-                        containerElement={<Link to="/userdetails" />}
+                        containerElement={<Link to="/requests" />}
                         primaryText="Resource requests"
                         leftIcon={
                             <FontIcon className="material-icons">priority_high</FontIcon>

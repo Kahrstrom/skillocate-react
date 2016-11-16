@@ -9,7 +9,7 @@ export default {
         primary3Color: Colors.bluGrey400,
         accent1Color: Colors.pinkA200,
         accent2Color: Colors.pinkA400,
-        accent3Color: Colors.pinkA700,
+        accent3Color: Colors.orangeA400,
         textColor: Colors.darkBlack,
         alternateTextColor: Colors.white,
         canvasColor: Colors.white,
