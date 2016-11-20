@@ -91,7 +91,7 @@ const ProjectRequest = () => {
                         <Grid style={styles.grid}>
                             <Row>
                                 <Col xs={12}>
-                                    <Card style={{margin: '4px 0px 4px 0px'}}>
+                                    <Card style={styles.card}>
                                         <Tabs>
                                             <Tab style={styles.tabs} label="Förslag">
                                                 <List>
@@ -120,15 +120,15 @@ const ProjectRequest = () => {
             <Paper style={styles.footer}>
                 <Row center="xs">
                     <Col xs={2}>
-                        <div style={styles.footerNumber}>4</div>
-                        <div style={styles.footerText}>Förfrågningar</div>
+                        <div style={styles.footerNumber}>{request.suggestions.length}</div>
+                        <div style={styles.footerText}>Förslag</div>
                     </Col>
                     <Col xs={2}>
                         <div style={styles.footerNumber}>0</div>
                         <div style={styles.footerText}>Svar</div>
                     </Col>
                     <Col xs={2}>
-                        <div style={styles.footerNumber}>2</div>
+                        <div style={styles.footerNumber}>{request.interested.length}</div>
                         <div style={styles.footerText}>Intresserade</div>
                     </Col>
                 </Row>
