@@ -1,11 +1,16 @@
 import React from 'react';
-import SKSideNavToolbar from './SKSideNavToolbar';
-import {Card, CardHeader, CardText} from 'material-ui/Card';
-import { List, ListItem } from 'material-ui/List';
-import {Tabs, Tab} from 'material-ui/Tabs';
+import SKPageHeader from './SKPageHeader';
+import { Card, CardHeader, CardText, CardActions } from 'material-ui/Card';
+import FlatButton from 'material-ui/FlatButton';
+import Paper from 'material-ui/Paper';
+import { List } from 'material-ui/List';
+import { Tabs, Tab } from 'material-ui/Tabs';
 import { Row, Col, Grid} from 'react-flexbox-grid/lib/index';
 import ResourceRequest from './ResourceRequest';
 import Theme from '../material-ui.theme';
+import SKProjectRequestForm from './forms/SKProjectRequestForm';
+import ChipInput from 'material-ui-chip-input';
+import request from '../resources/json/request.json';
 
 const styles = {
     tabs: {
@@ -15,110 +20,48 @@ const styles = {
         margin: '4px 0px 4px 0px'
     },
     grid: {
-        margin: '4px 8px 4px 8px'
+        margin: '50px 8px 0px 8px'
+    },
+    footer: {
+        height: '120px',
+        marginTop: '50px',
+        paddingTop: '12px',
+        paddingBottom: '24px'
+    },
+    footerNumber: {
+        color: Theme.palette.accent1Color,
+        fontSize: '56px'
+    },
+    footerText: {
+        fontSize: '24px'
+    },
+    cardFooter: {
+        paddingTop: '16px',
+        paddingBottom: '16px'
     }
 };
 
 const ProjectRequest = () => {
-    const request = {
-        title: 'Mail Gateway',
-        customer: 'Lundalogik',
-        location: 'Lund',
-        status: 'Förfrågan',
-        startdate: '2016-12-01',
-        enddate: '2016-12-01',
-        hours: '800',
-        numberPeople: '2',
-        resourceRequests: [
-            {
-                person: {
-                    idperson: 1,
-                    name: 'Jonatan Kåhrström',
-                    title: 'Application Consultant',
-                    image: '../resources/images/jka.png',
-                    tags: [
-                        {
-                            text: 'Javascript'
-                        },
-                        {
-                            text: 'C#'
-                        },
-                        {
-                            text: 'Project management'
-                        }
-                    ]
-                },
-                status: 'Accepted'
-            },
-            {
-                person: {
-                    idperson: 2,
-                    name: 'Andreas Åström',
-                    title: 'Developer',
-                    image: '../resources/images/aas.png',
-                    tags: [
-                        {
-                            text: 'Javascript'
-                        },
-                        {
-                            text: 'C#'
-                        },
-                        {
-                            text: 'SQL'
-                        }
-                    ]
-                },
-                status: 'Accepted'
-            },
-            {
-                person: {
-                    idperson: 3,
-                    name: 'Jenny Svensson',
-                    title: 'CEO',
-                    tags: [
-                        {
-                            text: 'Project management'
-                        },
-                        {
-                            text: 'Business'
-                        }
-                    ]
-                },
-                status: 'Declined'
-            }
-        ]
-    };
+    const tags = [];
+    const suggestions = [];
+    const interested = [];
+
+    request.tags.forEach((tag) => tags.push(tag.text));
+    request.suggestions.forEach((req, index) => suggestions.push(<ResourceRequest person={req.person} index={index} />));
+    request.interested.forEach((req, index) => interested.push(<ResourceRequest person={req.person} index={index} />));
     return (
         <div>
-            <SKSideNavToolbar>
-                <Grid>
-                    <Row center="xs" style={{marginTop: '32px'}}>
-                        <Col xs={12}>
-                            <div style={{color: 'white', textAlign: 'center', fontSize: '48px'}}>{request.title}</div>
-                        </Col>
-                    </Row>
-                    <Row center="xs" style={{marginTop: '8px'}}>
-                        <Col xs={12}>
-                            <div style={{color: 'white', textAlign: 'center', fontSize: '18px'}}>{request.customer}, {request.location}</div>
-                        </Col>
-                    </Row>
-                     <Row center="xs" style={{marginTop: '8px', marginBottom: '24px'}}>
-                        <Col xs={12}>
-                            <div style={{color: 'white', textAlign: 'center', fontSize: '14px'}}>{request.status}</div>
-                        </Col>
-                    </Row>
-                </Grid>
-            </SKSideNavToolbar>
+            <SKPageHeader header1={request.title} header2={request.customer + ', ' + request.location} header3={request.status} />
             <Grid>
-                <Row center="xs">
-                    <Col md="6">
+                <Row center="lg">
+                    <Col lg="6">
                         <Grid style={styles.grid}>
                             <Row start="xs">
                                 <Col xs={12} md={4} lg={4}>
                                     <Card style={styles.card}>
                                         <CardHeader title="Om"/>
                                         <CardText >
-                                            Bacon ipsum dolor amet ham brisket andouille, porchetta tri-tip ham hock kevin t-bone. Corned beef cupim tail chuck sausage meatball ribeye shoulder beef t-bone pork chop spare ribs.
+                                            {request.about}
                                         </CardText>
                                     </Card>
                                 </Col>
@@ -126,7 +69,12 @@ const ProjectRequest = () => {
                                     <Card style={styles.card}>
                                         <CardHeader title="Taggar"/>
                                         <CardText >
-                                            Bacon ipsum dolor amet ham brisket andouille, porchetta tri-tip ham hock kevin t-bone. Corned beef cupim tail chuck sausage meatball ribeye shoulder beef t-bone pork chop spare ribs.
+                                            <ChipInput
+                                                value={tags}
+                                                fullWidth={true}
+                                                onRequestAdd={(chip) => tags.push(chip)}
+                                                onRequestDelete={(chip) => tags.filter((t) => t !== chip)}
+                                                />
                                         </CardText>
                                     </Card>
                                 </Col>
@@ -134,13 +82,7 @@ const ProjectRequest = () => {
                                     <Card style={styles.card}>
                                         <CardHeader title="Projektdetaljer"/>
                                         <CardText >
-                                            <List>
-                                                <ListItem primaryText={<Row><Col xs={9}><div>Antal timmar:</div></Col><Col xs={3}><div>800</div></Col></Row>}/>
-                                                <ListItem primaryText={<Row><Col xs={9}><div>Antal personer:</div></Col><Col xs={3}><div>3</div></Col></Row>}/>
-                                                <ListItem primaryText={<Row><Col xs={9}><div>Plats:</div></Col><Col xs={3}><div>Lund</div></Col></Row>}/>
-                                                <ListItem primaryText={<Row><Col xs={9}><div>Startdatum:</div></Col><Col xs={3}><div>2016-12-01</div></Col></Row>}/>
-                                                <ListItem primaryText={<Row><Col xs={9}><div>Slutdatum:</div></Col><Col xs={3}><div>2016-03-18</div></Col></Row>}/>
-                                            </List>
+                                            <SKProjectRequestForm request={request} />
                                         </CardText>
                                     </Card>
                                 </Col>
@@ -151,17 +93,23 @@ const ProjectRequest = () => {
                                 <Col xs={12}>
                                     <Card style={{margin: '4px 0px 4px 0px'}}>
                                         <Tabs>
-                                            <Tab style={styles.tabs} label="Förfrågningar">
+                                            <Tab style={styles.tabs} label="Förslag">
                                                 <List>
-                                                    <ResourceRequest person={request.resourceRequests[0].person} />
-                                                    <ResourceRequest person={request.resourceRequests[1].person} />
-                                                    <ResourceRequest person={request.resourceRequests[2].person} />
+                                                    {suggestions}
                                                 </List>
                                             </Tab>
                                             <Tab style={styles.tabs} label="Intresserade">
-                                            test
+                                                <List>
+                                                    {interested}
+                                                </List>
                                             </Tab>
                                         </Tabs>
+                                        <CardActions style={styles.cardFooter}>
+                                            <Row end="xs">
+                                                <FlatButton label="Skicka förfrågan" />
+                                                <FlatButton label="Bemanna!" />
+                                            </Row>
+                                        </CardActions>
                                     </Card>
                                 </Col>
                             </Row>
@@ -169,6 +117,22 @@ const ProjectRequest = () => {
                     </Col>
                 </Row>
             </Grid>
+            <Paper style={styles.footer}>
+                <Row center="xs">
+                    <Col xs={2}>
+                        <div style={styles.footerNumber}>4</div>
+                        <div style={styles.footerText}>Förfrågningar</div>
+                    </Col>
+                    <Col xs={2}>
+                        <div style={styles.footerNumber}>0</div>
+                        <div style={styles.footerText}>Svar</div>
+                    </Col>
+                    <Col xs={2}>
+                        <div style={styles.footerNumber}>2</div>
+                        <div style={styles.footerText}>Intresserade</div>
+                    </Col>
+                </Row>
+            </Paper>
         </div>
     );
 };

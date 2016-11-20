@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router';
-import SKSideNavToolbar from './SKSideNavToolbar';
 import SKUserDetailForm from './forms/SKUserDetailForm';
 import Avatar from 'material-ui/Avatar';
 import FontIcon from 'material-ui/FontIcon';
@@ -13,13 +12,11 @@ const UserDetails = () => {
     return (
         <div>
             <SKSideNav>
-                <SKSideNavToolbar>
-                    <h4 style={{color: 'white', textAlign: 'center'}}>Jonatan Kåhrström</h4>
-                    <Avatar
-                        icon={<FontIcon className="material-icons">portrait</FontIcon>}
-                        size={160}
-                        />
-                </SKSideNavToolbar>
+                <h4 style={{color: 'white', textAlign: 'center'}}>Jonatan Kåhrström</h4>
+                <Avatar
+                    icon={<FontIcon className="material-icons">portrait</FontIcon>}
+                    size={160}
+                    />
                 <SKUserDetailForm details={education}/>
             </SKSideNav>
             <h1>My details</h1>
