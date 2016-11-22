@@ -6,7 +6,7 @@ import Paper from 'material-ui/Paper';
 import { List } from 'material-ui/List';
 import { Tabs, Tab } from 'material-ui/Tabs';
 import { Row, Col, Grid} from 'react-flexbox-grid/lib/index';
-import ResourceRequest from './ResourceRequest';
+import SKResourceListItem from './SKResourceListItem';
 import Theme from '../material-ui.theme';
 import SKProjectRequestForm from './forms/SKProjectRequestForm';
 import ChipInput from 'material-ui-chip-input';
@@ -19,7 +19,7 @@ const styles = {
     card: {
         margin: '4px 0px 4px 0px'
     },
-    grid: {
+    row: {
         margin: '50px 8px 0px 8px'
     },
     footer: {
@@ -38,28 +38,35 @@ const styles = {
     cardFooter: {
         paddingTop: '16px',
         paddingBottom: '16px'
+    },
+    cardTitle: {
+        fontSize: '18px'
+    },
+    list: {
+        marginLeft: '16px',
+        marginRight: '16px'
     }
 };
 
 const ProjectRequest = () => {
-    const tags = [];
+    let tags = [];
     const suggestions = [];
     const interested = [];
 
     request.tags.forEach((tag) => tags.push(tag.text));
-    request.suggestions.forEach((req, index) => suggestions.push(<ResourceRequest person={req.person} index={index} />));
-    request.interested.forEach((req, index) => interested.push(<ResourceRequest person={req.person} index={index} />));
+    request.suggestions.forEach((req, index) => suggestions.push(<SKResourceListItem person={req.person} index={index} projectTags={tags} />));
+    request.interested.forEach((req, index) => interested.push(<SKResourceListItem person={req.person} index={index} projectTags={tags} />));
     return (
         <div>
             <SKPageHeader header1={request.title} header2={request.customer + ', ' + request.location} header3={request.status} />
             <Grid>
                 <Row center="lg">
                     <Col lg="6">
-                        <Grid style={styles.grid}>
-                            <Row start="xs">
+                        <Grid>
+                            <Row start="xs" style={styles.row}>
                                 <Col xs={12} md={4} lg={4}>
                                     <Card style={styles.card}>
-                                        <CardHeader title="Om"/>
+                                        <CardHeader title="Om" titleStyle={styles.cardTitle}/>
                                         <CardText >
                                             {request.about}
                                         </CardText>
@@ -67,39 +74,41 @@ const ProjectRequest = () => {
                                 </Col>
                                 <Col xs={12} md={4} lg={4}>
                                     <Card style={styles.card}>
-                                        <CardHeader title="Taggar"/>
+                                        <CardHeader title="Taggar" titleStyle={styles.cardTitle}/>
                                         <CardText >
                                             <ChipInput
                                                 value={tags}
                                                 fullWidth={true}
-                                                onRequestAdd={(chip) => tags.push(chip)}
-                                                onRequestDelete={(chip) => tags.filter((t) => t !== chip)}
+                                                onRequestAdd={(chip) => {
+                                                    tags.push(chip);
+                                                }}
+                                                onRequestDelete={(chip) => {
+                                                    tags = tags.filter((t) => t !== chip);
+                                                }}
                                                 />
                                         </CardText>
                                     </Card>
                                 </Col>
                                 <Col xs={12} md={4} lg={4}>
                                     <Card style={styles.card}>
-                                        <CardHeader title="Projektdetaljer"/>
+                                        <CardHeader title="Projektdetaljer" titleStyle={styles.cardTitle}/>
                                         <CardText >
                                             <SKProjectRequestForm request={request} />
                                         </CardText>
                                     </Card>
                                 </Col>
                             </Row>
-                        </Grid>
-                        <Grid style={styles.grid}>
-                            <Row>
+                            <Row style={styles.row}>
                                 <Col xs={12}>
                                     <Card style={styles.card}>
                                         <Tabs>
                                             <Tab style={styles.tabs} label="Förslag">
-                                                <List>
+                                                <List style={styles.list}>
                                                     {suggestions}
                                                 </List>
                                             </Tab>
                                             <Tab style={styles.tabs} label="Intresserade">
-                                                <List>
+                                                <List style={styles.list}>
                                                     {interested}
                                                 </List>
                                             </Tab>
@@ -119,15 +128,15 @@ const ProjectRequest = () => {
             </Grid>
             <Paper style={styles.footer}>
                 <Row center="xs">
-                    <Col xs={2}>
+                    <Col xs={3} md={2}>
                         <div style={styles.footerNumber}>{request.suggestions.length}</div>
                         <div style={styles.footerText}>Förslag</div>
                     </Col>
-                    <Col xs={2}>
+                    <Col xs={3} md={2}>
                         <div style={styles.footerNumber}>0</div>
                         <div style={styles.footerText}>Svar</div>
                     </Col>
-                    <Col xs={2}>
+                    <Col xs={3} md={2}>
                         <div style={styles.footerNumber}>{request.interested.length}</div>
                         <div style={styles.footerText}>Intresserade</div>
                     </Col>

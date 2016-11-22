@@ -1,0 +1,183 @@
+import React from 'react';
+import SKPageHeader from './SKPageHeader';
+import { Card, CardHeader, CardText } from 'material-ui/Card';
+// import FlatButton from 'material-ui/FlatButton';
+import Paper from 'material-ui/Paper';
+import { List, ListItem } from 'material-ui/List';
+import { Tabs, Tab } from 'material-ui/Tabs';
+import { Row, Col, Grid} from 'react-flexbox-grid/lib/index';
+import Theme from '../material-ui.theme';
+import ChipInput from 'material-ui-chip-input';
+import profile from '../resources/json/profile.json';
+import FontIcon from 'material-ui/FontIcon';
+import Avatar from 'material-ui/Avatar';
+import SKProjectListItem from './SKProjectListItem';
+import SKEducationListItem from './SKEducationListItem';
+import SKCertificateListItem from './SKCertificateListItem';
+
+const styles = {
+    tabs: {
+        backgroundColor: Theme.palette.primary2Color
+    },
+    card: {
+        margin: '4px 0px 4px 0px'
+    },
+    grid: {
+        margin: '50px 8px 0px 8px'
+    },
+    row: {
+        margin: '50px 8px 0px 8px'
+    },
+    cardTitle: {
+        fontSize: '18px'
+    },
+    footer: {
+        height: '120px',
+        marginTop: '50px',
+        paddingTop: '12px',
+        paddingBottom: '24px'
+    },
+    footerNumber: {
+        color: Theme.palette.accent1Color,
+        fontSize: '56px'
+    },
+    footerText: {
+        fontSize: '24px'
+    },
+    list: {
+        marginLeft: '16px',
+        marginRight: '16px'
+    }
+};
+
+const Profile = () => {
+    let tags = [];
+    const educations = [];
+    const projects = [];
+    const certificates = [];
+
+    profile.tags.forEach((tag) => tags.push(tag.text));
+    profile.projects.forEach((item, index) => projects.push(<SKProjectListItem project={item} index={index}/>));
+    profile.educations.forEach((item, index) => educations.push(<SKEducationListItem education={item} index={index}/>));
+    profile.certificates.forEach((item, index) => certificates.push(<SKCertificateListItem certificate={item} index={index}/>));
+    const hours = profile.projects.map(project => project.hours)
+                                    .reduce((a, b) => a + b, 0);
+    return (
+        <div>
+            <SKPageHeader header1={profile.firstname + ' ' + profile.lastname} header2={profile.title} header3={profile.city} />
+            <Grid>
+                <Row center="lg">
+                    <Col lg="6">
+                        <Grid>
+                            <Row start="xs" style={styles.row}>
+                                <Col xs={12} md={7} lg={7}>
+                                    <Card style={styles.card}>
+                                        <CardHeader children={<Row><Col xs={4} /><Col xs={8}><span style={{fontSize: '24px'}}>{profile.firstname + ' ' + profile.lastname}</span></Col></Row>}/>
+                                        <CardText>
+                                            <Row>
+                                                <Col style={{textAlign: 'center'}} xs={4}>
+                                                    <Avatar
+                                                        icon={<FontIcon className="material-icons">person</FontIcon>}
+                                                        size={180}
+                                                        />
+                                                </Col>
+                                                <Col xs={8}>
+                                                    <ListItem
+                                                        leftIcon={<FontIcon className="material-icons">mail_outline</FontIcon>}
+                                                        primaryText={profile.email}
+                                                    />
+                                                    <ListItem
+                                                        leftIcon={<FontIcon className="material-icons">smartphone</FontIcon>}
+                                                        primaryText={profile.mobilephone}
+                                                    />
+                                                    <ListItem
+                                                        leftIcon={<FontIcon className="material-icons">phone</FontIcon>}
+                                                        primaryText={profile.workphone}
+                                                    />
+                                                    <ListItem
+                                                        leftIcon={<FontIcon className="material-icons">location_on</FontIcon>}
+                                                        primaryText={profile.address + ' ' + profile.zipcode + ', ' + profile.city}
+                                                    />
+                                                </Col>
+                                            </Row>
+                                        </CardText>
+                                    </Card>
+                                </Col>
+                                <Col xs={12} md={5} lg={5}>
+                                    <Card style={styles.card}>
+                                        <CardHeader title="Taggar" titleStyle={styles.cardTitle}/>
+                                        <CardText >
+                                            <ChipInput
+                                                value={tags}
+                                                fullWidth={true}
+                                                onRequestAdd={(chip) => {
+                                                    tags.push(chip);
+                                                }}
+                                                onRequestDelete={(chip) => {
+                                                    tags = tags.filter((t) => t !== chip);
+                                                }}
+                                                />
+                                        </CardText>
+                                    </Card>
+                                </Col>
+                            </Row>
+                            <Row start="xs" style={styles.row}>
+                                <Col xs={12}>
+                                    <Card style={styles.card}>
+                                        <CardHeader title="Projekt" titleStyle={styles.cardTitle}/>
+                                        <CardText >
+                                            {projects}
+                                        </CardText>
+                                    </Card>
+                                </Col>
+                            </Row>
+                            <Row style={styles.row}>
+                                <Col xs={12}>
+                                    <Card style={styles.card}>
+                                        sdfsdf
+                                    </Card>
+                                </Col>
+                            </Row>
+                            <Row style={styles.row}>
+                                <Col xs={12}>
+                                    <Card style={styles.card}>
+                                        <Tabs>
+                                            <Tab style={styles.tabs} label="Utbildningar">
+                                                <List style={styles.list}>
+                                                    {educations}
+                                                </List>
+                                            </Tab>
+                                            <Tab style={styles.tabs} label="Kurser/Certifikat">
+                                                <List style={styles.list}>
+                                                    {certificates}
+                                                </List>
+                                            </Tab>
+                                        </Tabs>
+                                    </Card>
+                                </Col>
+                            </Row>
+                        </Grid>
+                    </Col>
+                </Row>
+            </Grid>
+            <Paper style={styles.footer}>
+                <Row center="xs">
+                    <Col xs={3} md={2}>
+                        <div style={styles.footerNumber}>{profile.projects.length}</div>
+                        <div style={styles.footerText}>Antal projekt</div>
+                    </Col>
+                    <Col xs={3} md={2}>
+                        <div style={styles.footerNumber}>{hours}</div>
+                        <div style={styles.footerText}>Projekttimmar</div>
+                    </Col>
+                    <Col xs={3} md={2}>
+                        <div style={styles.footerNumber}>92%</div>
+                        <div style={styles.footerText}>Kundnöjdhet</div>
+                    </Col>
+                </Row>
+            </Paper>
+        </div>
+    );
+};
+
+export default Profile;

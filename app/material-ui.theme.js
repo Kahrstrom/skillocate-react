@@ -15,8 +15,12 @@ export default {
         canvasColor: Colors.white,
         borderColor: Colors.grey300,
         disabledColor: fade(Colors.darkBlack, 0.3),
-        pickerHeaderColor: Colors.blueGrey500,
+        pickerHeaderColor: Colors.lightBlue500,
         clockCircleColor: fade(Colors.darkBlack, 0.07),
         shadowColor: Colors.fullBlack,
+        primaryGreyColor: Colors.grey400,
+        projectGreen: Colors.green600,
+        educationYellow: Colors.yellow700,
+        certificateBlue: Colors.lightBlue600
     },
 };
