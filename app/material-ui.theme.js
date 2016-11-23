@@ -19,8 +19,8 @@ export default {
         clockCircleColor: fade(Colors.darkBlack, 0.07),
         shadowColor: Colors.fullBlack,
         primaryGreyColor: Colors.grey400,
-        projectGreen: Colors.green600,
-        educationYellow: Colors.yellow700,
-        certificateBlue: Colors.lightBlue600
+        projectColor: Colors.lightBlue700,
+        educationColor: Colors.yellow700,
+        certificateColor: Colors.green600
     },
 };

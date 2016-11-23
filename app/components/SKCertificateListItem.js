@@ -10,7 +10,7 @@ const SKCertificateListItem = ({certificate, index}) => {
         style={index % 2 === 0 ? {backgroundColor: '#F5F2F2'} : {backgroundColor: '#FFF'}}
         primaryText={certificate.title + ' - ' + certificate.type}
         leftAvatar={<Avatar
-                        backgroundColor={Theme.palette.certificateBlue}
+                        backgroundColor={Theme.palette.certificateColor}
                         icon={<FontIcon className="material-icons">star</FontIcon>}
                         />}
         secondaryText={certificate.date + ', ' + certificate.school}

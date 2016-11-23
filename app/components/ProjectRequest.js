@@ -60,69 +60,63 @@ const ProjectRequest = () => {
         <div>
             <SKPageHeader header1={request.title} header2={request.customer + ', ' + request.location} header3={request.status} />
             <Grid>
-                <Row center="lg">
-                    <Col lg="6">
-                        <Grid>
-                            <Row start="xs" style={styles.row}>
-                                <Col xs={12} md={4} lg={4}>
-                                    <Card style={styles.card}>
-                                        <CardHeader title="Om" titleStyle={styles.cardTitle}/>
-                                        <CardText >
-                                            {request.about}
-                                        </CardText>
-                                    </Card>
-                                </Col>
-                                <Col xs={12} md={4} lg={4}>
-                                    <Card style={styles.card}>
-                                        <CardHeader title="Taggar" titleStyle={styles.cardTitle}/>
-                                        <CardText >
-                                            <ChipInput
-                                                value={tags}
-                                                fullWidth={true}
-                                                onRequestAdd={(chip) => {
-                                                    tags.push(chip);
-                                                }}
-                                                onRequestDelete={(chip) => {
-                                                    tags = tags.filter((t) => t !== chip);
-                                                }}
-                                                />
-                                        </CardText>
-                                    </Card>
-                                </Col>
-                                <Col xs={12} md={4} lg={4}>
-                                    <Card style={styles.card}>
-                                        <CardHeader title="Projektdetaljer" titleStyle={styles.cardTitle}/>
-                                        <CardText >
-                                            <SKProjectRequestForm request={request} />
-                                        </CardText>
-                                    </Card>
-                                </Col>
-                            </Row>
-                            <Row style={styles.row}>
-                                <Col xs={12}>
-                                    <Card style={styles.card}>
-                                        <Tabs>
-                                            <Tab style={styles.tabs} label="Förslag">
-                                                <List style={styles.list}>
-                                                    {suggestions}
-                                                </List>
-                                            </Tab>
-                                            <Tab style={styles.tabs} label="Intresserade">
-                                                <List style={styles.list}>
-                                                    {interested}
-                                                </List>
-                                            </Tab>
-                                        </Tabs>
-                                        <CardActions style={styles.cardFooter}>
-                                            <Row end="xs">
-                                                <FlatButton label="Skicka förfrågan" />
-                                                <FlatButton label="Bemanna!" />
-                                            </Row>
-                                        </CardActions>
-                                    </Card>
-                                </Col>
-                            </Row>
-                        </Grid>
+                <Row start="xs" style={styles.row}>
+                    <Col xs={12} md={4} lg={4}>
+                        <Card style={styles.card}>
+                            <CardHeader title="Om" titleStyle={styles.cardTitle}/>
+                            <CardText >
+                                {request.about}
+                            </CardText>
+                        </Card>
+                    </Col>
+                    <Col xs={12} md={4} lg={4}>
+                        <Card style={styles.card}>
+                            <CardHeader title="Taggar" titleStyle={styles.cardTitle}/>
+                            <CardText >
+                                <ChipInput
+                                    value={tags}
+                                    fullWidth={true}
+                                    onRequestAdd={(chip) => {
+                                        tags.push(chip);
+                                    }}
+                                    onRequestDelete={(chip) => {
+                                        tags = tags.filter((t) => t !== chip);
+                                    }}
+                                    />
+                            </CardText>
+                        </Card>
+                    </Col>
+                    <Col xs={12} md={4} lg={4}>
+                        <Card style={styles.card}>
+                            <CardHeader title="Projektdetaljer" titleStyle={styles.cardTitle}/>
+                            <CardText >
+                                <SKProjectRequestForm request={request} />
+                            </CardText>
+                        </Card>
+                    </Col>
+                </Row>
+                <Row style={styles.row}>
+                    <Col xs={12}>
+                        <Card style={styles.card}>
+                            <Tabs>
+                                <Tab style={styles.tabs} label="Förslag">
+                                    <List style={styles.list}>
+                                        {suggestions}
+                                    </List>
+                                </Tab>
+                                <Tab style={styles.tabs} label="Intresserade">
+                                    <List style={styles.list}>
+                                        {interested}
+                                    </List>
+                                </Tab>
+                            </Tabs>
+                            <CardActions style={styles.cardFooter}>
+                                <Row end="xs">
+                                    <FlatButton label="Skicka förfrågan" />
+                                    <FlatButton label="Bemanna!" />
+                                </Row>
+                            </CardActions>
+                        </Card>
                     </Col>
                 </Row>
             </Grid>

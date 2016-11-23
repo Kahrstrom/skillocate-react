@@ -24,6 +24,7 @@ const SKResourceListItem = ({person, index, projectTags}) => {
         primaryText={person.name}
         leftCheckbox={<Checkbox />}
         secondaryText={person.title}
+        onTouchTap={() => {console.log('123123');}}
         children={<Row style={styles.row}>{tags}</Row>}
       />
     );

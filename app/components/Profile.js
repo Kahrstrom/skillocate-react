@@ -52,114 +52,124 @@ const styles = {
 
 const Profile = () => {
     let tags = [];
-    const educations = [];
-    const projects = [];
-    const certificates = [];
 
     profile.tags.forEach((tag) => tags.push(tag.text));
-    profile.projects.forEach((item, index) => projects.push(<SKProjectListItem project={item} index={index}/>));
-    profile.educations.forEach((item, index) => educations.push(<SKEducationListItem education={item} index={index}/>));
-    profile.certificates.forEach((item, index) => certificates.push(<SKCertificateListItem certificate={item} index={index}/>));
+    const projects = profile.projects.map((item, index) => <SKProjectListItem project={item} index={index}/>);
+    const educations = profile.educations.map((item, index) => <SKEducationListItem education={item} index={index}/>);
+    const certificates = profile.certificates.map((item, index) => <SKCertificateListItem certificate={item} index={index}/>);
     const hours = profile.projects.map(project => project.hours)
                                     .reduce((a, b) => a + b, 0);
     return (
         <div>
             <SKPageHeader header1={profile.firstname + ' ' + profile.lastname} header2={profile.title} header3={profile.city} />
             <Grid>
-                <Row center="lg">
-                    <Col lg="6">
-                        <Grid>
-                            <Row start="xs" style={styles.row}>
-                                <Col xs={12} md={7} lg={7}>
-                                    <Card style={styles.card}>
-                                        <CardHeader children={<Row><Col xs={4} /><Col xs={8}><span style={{fontSize: '24px'}}>{profile.firstname + ' ' + profile.lastname}</span></Col></Row>}/>
-                                        <CardText>
-                                            <Row>
-                                                <Col style={{textAlign: 'center'}} xs={4}>
-                                                    <Avatar
-                                                        icon={<FontIcon className="material-icons">person</FontIcon>}
-                                                        size={180}
-                                                        />
-                                                </Col>
-                                                <Col xs={8}>
-                                                    <ListItem
-                                                        leftIcon={<FontIcon className="material-icons">mail_outline</FontIcon>}
-                                                        primaryText={profile.email}
-                                                    />
-                                                    <ListItem
-                                                        leftIcon={<FontIcon className="material-icons">smartphone</FontIcon>}
-                                                        primaryText={profile.mobilephone}
-                                                    />
-                                                    <ListItem
-                                                        leftIcon={<FontIcon className="material-icons">phone</FontIcon>}
-                                                        primaryText={profile.workphone}
-                                                    />
-                                                    <ListItem
-                                                        leftIcon={<FontIcon className="material-icons">location_on</FontIcon>}
-                                                        primaryText={profile.address + ' ' + profile.zipcode + ', ' + profile.city}
-                                                    />
-                                                </Col>
-                                            </Row>
-                                        </CardText>
-                                    </Card>
-                                </Col>
-                                <Col xs={12} md={5} lg={5}>
-                                    <Card style={styles.card}>
-                                        <CardHeader title="Taggar" titleStyle={styles.cardTitle}/>
-                                        <CardText >
-                                            <ChipInput
-                                                value={tags}
-                                                fullWidth={true}
-                                                onRequestAdd={(chip) => {
-                                                    tags.push(chip);
-                                                }}
-                                                onRequestDelete={(chip) => {
-                                                    tags = tags.filter((t) => t !== chip);
-                                                }}
-                                                />
-                                        </CardText>
-                                    </Card>
-                                </Col>
-                            </Row>
-                            <Row start="xs" style={styles.row}>
-                                <Col xs={12}>
-                                    <Card style={styles.card}>
-                                        <CardHeader title="Projekt" titleStyle={styles.cardTitle}/>
-                                        <CardText >
-                                            {projects}
-                                        </CardText>
-                                    </Card>
-                                </Col>
-                            </Row>
-                            <Row style={styles.row}>
-                                <Col xs={12}>
-                                    <Card style={styles.card}>
-                                        sdfsdf
-                                    </Card>
-                                </Col>
-                            </Row>
-                            <Row style={styles.row}>
-                                <Col xs={12}>
-                                    <Card style={styles.card}>
-                                        <Tabs>
-                                            <Tab style={styles.tabs} label="Utbildningar">
-                                                <List style={styles.list}>
-                                                    {educations}
-                                                </List>
-                                            </Tab>
-                                            <Tab style={styles.tabs} label="Kurser/Certifikat">
-                                                <List style={styles.list}>
-                                                    {certificates}
-                                                </List>
-                                            </Tab>
-                                        </Tabs>
-                                    </Card>
-                                </Col>
-                            </Row>
-                        </Grid>
+                <Row start="xs" style={styles.row}>
+                    <Col xs={12} md={7} lg={7}>
+                        <Card style={styles.card}>
+                            <CardHeader children={<Row><Col xs={4} /><Col xs={8}><span style={{fontSize: '24px'}}>{profile.firstname + ' ' + profile.lastname}</span></Col></Row>}/>
+                            <CardText>
+                                <Row>
+                                    <Col style={{textAlign: 'center'}} xs={4}>
+                                        <Avatar
+                                            icon={<FontIcon className="material-icons">person</FontIcon>}
+                                            size={180}
+                                            />
+                                    </Col>
+                                    <Col xs={8}>
+                                        <ListItem
+                                            leftIcon={<FontIcon className="material-icons">mail_outline</FontIcon>}
+                                            primaryText={profile.email}
+                                        />
+                                        <ListItem
+                                            leftIcon={<FontIcon className="material-icons">smartphone</FontIcon>}
+                                            primaryText={profile.mobilephone}
+                                        />
+                                        <ListItem
+                                            leftIcon={<FontIcon className="material-icons">phone</FontIcon>}
+                                            primaryText={profile.workphone}
+                                        />
+                                        <ListItem
+                                            leftIcon={<FontIcon className="material-icons">location_on</FontIcon>}
+                                            primaryText={profile.address + ' ' + profile.zipcode + ', ' + profile.city}
+                                        />
+                                    </Col>
+                                </Row>
+                            </CardText>
+                        </Card>
+                    </Col>
+                    <Col xs={12} md={5} lg={5}>
+                        <Card style={styles.card}>
+                            <CardHeader title="Taggar" titleStyle={styles.cardTitle}/>
+                            <CardText >
+                                <ChipInput
+                                    value={tags}
+                                    fullWidth={true}
+                                    onRequestAdd={(chip) => {
+                                        tags.push(chip);
+                                    }}
+                                    onRequestDelete={(chip) => {
+                                        tags = tags.filter((t) => t !== chip);
+                                    }}
+                                    />
+                            </CardText>
+                        </Card>
+                    </Col>
+                </Row>
+                <Row start="xs" style={styles.row}>
+                    <Col xs={12}>
+                        <Card style={styles.card}>
+                            <CardHeader title="Projekt" titleStyle={styles.cardTitle}/>
+                            <CardText >
+                                {projects}
+                            </CardText>
+                        </Card>
+                    </Col>
+                </Row>
+                <Row style={styles.row}>
+                    <Col xs={12}>
+                        <Card style={styles.card}>
+                            sdfsdf
+                        </Card>
+                    </Col>
+                </Row>
+                <Row style={styles.row}>
+                    <Col xs={12}>
+                        <Card style={styles.card}>
+                            <Tabs>
+                                <Tab style={styles.tabs} label="Utbildningar">
+                                    <List style={styles.list}>
+                                        {educations}
+                                    </List>
+                                </Tab>
+                                <Tab style={styles.tabs} label="Kurser/Certifikat">
+                                    <List style={styles.list}>
+                                        {certificates}
+                                    </List>
+                                </Tab>
+                            </Tabs>
+                        </Card>
+                    </Col>
+                </Row>
+                <Row start="xs" style={styles.row}>
+                    <Col xs={12} md={6} lg={6}>
+                        <Card style={styles.card}>
+                            <CardHeader title="Om" titleStyle={styles.cardTitle}/>
+                            <CardText>
+                                {profile.about}
+                            </CardText>
+                        </Card>
+                    </Col>
+                    <Col xs={12} md={6} lg={6}>
+                        <Card style={styles.card}>
+                            <CardHeader title="Drivkraft" titleStyle={styles.cardTitle}/>
+                            <CardText >
+                                {profile.driveforce}
+                            </CardText>
+                        </Card>
                     </Col>
                 </Row>
             </Grid>
+
             <Paper style={styles.footer}>
                 <Row center="xs">
                     <Col xs={3} md={2}>

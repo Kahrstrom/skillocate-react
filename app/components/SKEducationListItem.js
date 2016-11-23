@@ -10,7 +10,7 @@ const SKEducationListItem = ({education, index}) => {
         style={index % 2 === 0 ? {backgroundColor: '#F5F2F2'} : {backgroundColor: '#FFF'}}
         primaryText={education.title + ' - ' + education.education}
         leftAvatar={<Avatar
-                        backgroundColor={Theme.palette.educationYellow}
+                        backgroundColor={Theme.palette.educationColor}
                         icon={<FontIcon className="material-icons">school</FontIcon>}
                         />}
         secondaryText={education.startdate + ' - ' + education.enddate + ', ' + education.school}

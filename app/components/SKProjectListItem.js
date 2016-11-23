@@ -24,7 +24,7 @@ const SKProjectListItem = ({project, index}) => {
         style={index % 2 === 0 ? {backgroundColor: '#F5F2F2'} : {backgroundColor: '#FFF'}}
         primaryText={project.title + ' - ' + project.customer}
         leftAvatar={<Avatar
-                        backgroundColor={Theme.palette.projectGreen}
+                        backgroundColor={Theme.palette.projectColor}
                         icon={<FontIcon className="material-icons">assignment</FontIcon>}
                         />}
         secondaryText={project.startdate + ' - ' + project.enddate + ', ' + project.location}
