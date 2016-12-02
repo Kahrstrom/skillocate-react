@@ -1,13 +1,12 @@
-import { createStore } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import rootReducer from '../reducers';
-import DevTools from '../containers/DevTools';
+import dataService from '../middleware/DataService';
 
 export default function configureStore(initialState) {
-    const store = createStore(
-        rootReducer,
-        initialState,
-        DevTools.instrument()
-    );
+    const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+    const store = createStore(rootReducer, initialState, composeEnhancers(
+        applyMiddleware(dataService)
+    ));
 
     return store;
 }
