@@ -1,16 +1,20 @@
 import React from 'react';
-import SKPageHeader from './SKPageHeader';
+// Material
 import { Card, CardHeader, CardText, CardActions } from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 import Paper from 'material-ui/Paper';
 import { List } from 'material-ui/List';
 import { Tabs, Tab } from 'material-ui/Tabs';
-import { Row, Col, Grid} from 'react-flexbox-grid/lib/index';
-import SKResourceListItem from './SKResourceListItem';
-import Theme from '../material-ui.theme';
-import SKProjectRequestForm from './forms/SKProjectRequestForm';
 import ChipInput from 'material-ui-chip-input';
-import request from '../resources/json/request.json';
+// Flexbox
+import { Row, Col, Grid} from 'react-flexbox-grid/lib/index';
+// Skillocate components
+import SKPageHeader from '../common//SKPageHeader';
+import SKResourceListItem from '../common/SKResourceListItem';
+import SKProjectRequestForm from '../forms/SKProjectRequestForm';
+import Theme from '../../material-ui.theme';
+// Static
+import request from '../../resources/json/request.json';
 
 const styles = {
     tabs: {

@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router';
-import SKCard from './SKCard';
+import SKCard from './common/SKCard';
 
 const Home = () => {
     let cards = [];

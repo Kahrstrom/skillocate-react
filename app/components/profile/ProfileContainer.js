@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Profile from '../components/Profile';
+import Profile from './Profile';
 import React, { Component, PropTypes } from 'react';
 
 class ProfileContainer extends Component {

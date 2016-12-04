@@ -1,19 +1,19 @@
 import React, {PropTypes} from 'react';
-import SKPageHeader from './SKPageHeader';
+import SKPageHeader from '../common/SKPageHeader';
 import { Card, CardHeader, CardText } from 'material-ui/Card';
 // import FlatButton from 'material-ui/FlatButton';
 import Paper from 'material-ui/Paper';
 import { List, ListItem } from 'material-ui/List';
 import { Tabs, Tab } from 'material-ui/Tabs';
 import { Row, Col, Grid} from 'react-flexbox-grid/lib/index';
-import Theme from '../material-ui.theme';
+import Theme from '../../material-ui.theme';
 import ChipInput from 'material-ui-chip-input';
-import profile from '../resources/json/profile.json';
+import profile from '../../resources/json/profile.json';
 import FontIcon from 'material-ui/FontIcon';
 import Avatar from 'material-ui/Avatar';
-import SKProjectListItem from './SKProjectListItem';
-import SKEducationListItem from './SKEducationListItem';
-import SKCertificateListItem from './SKCertificateListItem';
+import SKProjectListItem from '../common/SKProjectListItem';
+import SKEducationListItem from '../common/SKEducationListItem';
+import SKCertificateListItem from '../common/SKCertificateListItem';
 
 const styles = {
     tabs: {
@@ -61,7 +61,7 @@ const Profile = ({isFetching, userDetails}) => {
     if(!isFetching) {
         return (
             <div>
-                <SKPageHeader header1={userDetails.firstname + ' ' + profile.lastname} header2={profile.title} header3={profile.city} />
+                <SKPageHeader header1={userDetails.firstname + ' ' + userDetails.lastname} header2={profile.title} header3={profile.city} />
                 <Grid>
                     <Row start="xs" style={styles.row}>
                         <Col xs={12} md={7} lg={7}>

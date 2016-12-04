@@ -3,7 +3,7 @@ import {ListItem} from 'material-ui/List';
 import Chip from 'material-ui/Chip';
 import Checkbox from 'material-ui/Checkbox';
 import { Row } from 'react-flexbox-grid/lib/index';
-import Theme from '../material-ui.theme';
+import Theme from '../../material-ui.theme';
 
 const styles = {
     row: {

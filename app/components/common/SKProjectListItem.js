@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import {ListItem} from 'material-ui/List';
 import Chip from 'material-ui/Chip';
 import { Row } from 'react-flexbox-grid/lib/index';
-import Theme from '../material-ui.theme';
+import Theme from '../../material-ui.theme';
 import FontIcon from 'material-ui/FontIcon';
 import Avatar from 'material-ui/Avatar';
 

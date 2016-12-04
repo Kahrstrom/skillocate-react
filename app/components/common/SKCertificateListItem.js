@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import {ListItem} from 'material-ui/List';
-import Theme from '../material-ui.theme';
+import Theme from '../../material-ui.theme';
 import FontIcon from 'material-ui/FontIcon';
 import Avatar from 'material-ui/Avatar';
 

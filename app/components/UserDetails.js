@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import SKUserDetailForm from './forms/SKUserDetailForm';
 import Avatar from 'material-ui/Avatar';
 import FontIcon from 'material-ui/FontIcon';
-import SKSideNav from './SKSideNav';
+import SKSideNav from './common/SKSideNav';
 
 
 const UserDetails = () => {

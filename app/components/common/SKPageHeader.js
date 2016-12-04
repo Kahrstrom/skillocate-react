@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { Row, Col, Grid} from 'react-flexbox-grid/lib/index';
-import Theme from '../material-ui.theme';
+import Theme from '../../material-ui.theme';
 import Toolbar from 'material-ui/Toolbar';
 
 const styles = {
