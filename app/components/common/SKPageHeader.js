@@ -1,51 +1,42 @@
 import React, { PropTypes } from 'react';
-import { Row, Col, Grid} from 'react-flexbox-grid/lib/index';
 import Theme from '../../material-ui.theme';
-import Toolbar from 'material-ui/Toolbar';
 
 const styles = {
     header1: {
         color: 'white',
-        textAlign: 'center',
         fontSize: '48px'
     },
     header2: {
         color: 'white',
-        textAlign: 'center',
         fontSize: '18px'
     },
     header3: {
         color: Theme.palette.accent3Color,
-        textAlign: 'center',
         fontSize: '18px'
     },
-    toolbar: {
+    pageHeaderContainer: {
         backgroundColor: Theme.palette.primary2Color,
-        height: '20%'
+        height: '230px',
+        position: 'relative',
+    },
+    pageHeader: {
+        position: 'absolute',
+        textAlign: 'center',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)'
     }
 };
 
 const SKPageHeader = ({header1, header2, header3}) => {
     return (
-        <Toolbar style={styles.toolbar}>
-            <Grid>
-                <Row center="xs" style={{marginTop: '32px'}}>
-                    <Col xs={12}>
-                        <div style={styles.header1}>{header1}</div>
-                    </Col>
-                </Row>
-                <Row center="xs" style={{marginTop: '8px'}}>
-                    <Col xs={12}>
-                        <div style={styles.header2}>{header2}</div>
-                    </Col>
-                </Row>
-                    <Row center="xs" style={{marginTop: '8px', marginBottom: '24px'}}>
-                    <Col xs={12}>
-                        <div style={styles.header3}>{header3}</div>
-                    </Col>
-                </Row>
-            </Grid>
-        </Toolbar>
+        <div style={styles.pageHeaderContainer}>
+            <div style={styles.pageHeader}>
+                <h1 style={styles.header1}>{header1}</h1>
+                <h2 style={styles.header2}>{header2}</h2>
+                <h3 style={styles.header3}>{header3}</h3>
+            </div>
+        </div>
     );
 };
 
