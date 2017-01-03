@@ -14,7 +14,6 @@ const styles = {
 
 const text = 'Bacon ipsum dolor amet leberkas doner biltong tenderloin tail chicken tri-tip. Flank shank tongue, brisket jerky jowl kevin turducken spare ribs sausage boudin beef ribs short ribs drumstick swine. Kevin alcatra kielbasa ground round short loin. Landjaeger frankfurter fatback, t-bone ham hock pork chop ball tip kielbasa pig beef ribs swine spare ribs picanha turducken. Jowl leberkas pig ground round frankfurter. Beef shoulder prosciutto capicola shankle ham pork chop burgdoggen shank. Chicken shank shankle ground round biltong shoulder.';
 
-
 const SKUserDetailForm = ({details}) => {
     return(
         <form>
@@ -32,6 +31,9 @@ const SKUserDetailForm = ({details}) => {
                 <Tab style={styles.tabs} label="Details">
                     <section style={{padding: 8}}>
                         <div>
+                            <Field name="birthdate" input={details.birthdate} label="Birthdate" mode="landscape" component={RenderDatePicker} container="inline"  fullWidth="true"/>
+                        </div>
+                        <div>
                             <Field name="firstname" component={RenderTextField} type="text" label="First name" input={details.firstname}  fullWidth="true"/>
                         </div>
                         <div>
@@ -48,9 +50,6 @@ const SKUserDetailForm = ({details}) => {
                         </div>
                         <div>
                             <Field name="city" component={RenderTextField} type="text" input={details.city} label="Home city"  fullWidth="true"/>
-                        </div>
-                        <div>
-                            <Field name="birthdate" input={details.birthdate} label="Birthdate" mode="landscape" component={RenderDatePicker} container="inline"  fullWidth="true"/>
                         </div>
                     </section>
                 </Tab>

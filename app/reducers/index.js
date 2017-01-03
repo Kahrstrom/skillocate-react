@@ -1,21 +1,15 @@
 import { routerReducer as routing } from 'react-router-redux';
 import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
-import * as types from '../actions/types';
+import loading from './Loading';
+import userDetails from './UserDetailReducers';
 
-const signIn = (state = '', action) => {
-    switch (action.type) {
-        case types.SIGNIN:
-            return action.credentials;
-        default:
-            return state;
-    }
-};
 
 const rootReducer = combineReducers({
-    signIn: signIn,
     routing: routing,
-    form: formReducer
+    form: formReducer,
+    loading: loading,
+    userDetails: userDetails
 });
 
 export default rootReducer;

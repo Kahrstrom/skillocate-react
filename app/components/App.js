@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import SKNavBar from './SKNavBar';
+import SKNavBar from './common/SKNavBar';
 // import {AppBar} from 'material-ui';
 
 const App = ({ children }) => {

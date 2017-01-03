@@ -17,16 +17,22 @@
   "author": "Jean-Pierre Sierens",
   "license": "MIT",
   "dependencies": {
+    "classnames": "^2.2.5",
+    "flexboxgrid": "^6.3.1",
+    "isomorphic-fetch": "^2.2.1",
     "material-ui": "^0.15.4",
+    "material-ui-chip-input": "^0.11.0",
     "react": "^15.0.2",
     "react-dom": "^15.0.2",
+    "react-flexbox-grid": "^0.10.2",
     "react-hot-loader": "^3.0.0-beta.2",
     "react-redux": "^4.4.5",
     "react-router": "^2.4.0",
     "react-router-redux": "^4.0.4",
     "react-tap-event-plugin": "^1.0.0",
     "redux": "^3.5.2",
-    "redux-form": "^6.0.5"
+    "redux-form": "^6.0.5",
+    "superagent": "^3.1.0"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.6",
