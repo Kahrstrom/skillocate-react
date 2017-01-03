@@ -1,6 +1,12 @@
 import React, { PropTypes } from 'react';
 import {Card, CardHeader, CardText} from 'material-ui/Card';
 
+const styles = {
+    test: {
+        backgroundColor: 'green'
+    }
+};
+
 const SKCard = ({title, body, subtitle}) => {
     return (
         <Card>
@@ -8,10 +14,12 @@ const SKCard = ({title, body, subtitle}) => {
             title={title}
             subtitle={subtitle}
             />
-            <CardText >
+            <CardText>
             {body}
             </CardText>
         </Card>
+        asdasddasd
+        <div style={styles.test}>LOL</div>
     );
 };
 
